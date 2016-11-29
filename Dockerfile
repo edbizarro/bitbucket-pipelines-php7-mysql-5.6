@@ -7,9 +7,10 @@ ARG MYSQL_ROOT_PASS=root
 
 # MYSQL
 # /usr/bin/mysqld_safe
+RUN service mysql stop
 RUN DEBIAN_FRONTEND=noninteractive apt-get remove --purge -qqy mysql-server-5.7 && \
     rm /var/lib/mysql/debian-5.7.flag && \
-    rm -r /etc/mysql/
+    rm -rf /etc/mysql/ /var/lib/mysql
     
 RUN DEBIAN_FRONTEND=noninteractive add-apt-repository -y 'deb http://archive.ubuntu.com/ubuntu trusty universe'
     
